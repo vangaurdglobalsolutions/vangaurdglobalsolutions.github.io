@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vanguard Global Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+
+<style>
+:root{--bg:#0b0f14;--panel:#141a22;--bar:#0e141c;--line:#1c2533;--txt:#e6e6e6;--muted:#aab1c3}
+body{margin:0;font-family:Arial;background:var(--bg);color:var(--txt)}
+nav{display:flex;gap:18px;padding:16px;background:var(--bar);justify-content:center;border-bottom:1px solid var(--line);flex-wrap:wrap}
+nav a{color:#cfd6e6;text-decoration:none;letter-spacing:1px;font-size:14px}
+header{text-align:center;padding:70px 20px;background:radial-gradient(circle at top,#1b2430,var(--bg))}
+.logo-wrap{display:inline-block;opacity:0;transform:translateY(-10px) scale(.98);animation:reveal .9s ease-out forwards}
+@keyframes reveal{to{opacity:1;transform:none}}
+header img{max-width:170px;margin-bottom:18px}
+section{max-width:1000px;margin:auto;padding:50px 20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--panel);padding:20px;border-radius:8px;border:1px solid var(--line)}
+h1,h2{letter-spacing:2px;text-transform:uppercase}
+.subtle{color:var(--muted);font-size:14px}
+#map{height:420px;border-radius:10px;border:1px solid var(--line);overflow:hidden}
+.legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.badge{border:1px solid var(--line);background:#0e141c;border-radius:999px;padding:6px 10px;color:var(--muted);font-size:12px}
+.downloads a{display:inline-block;margin:8px 10px 0 0;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:#0e141c;color:#cfd6e6;text-decoration:none;font-size:13px}
+.downloads a:hover{border-color:#2a3b55}
+footer{text-align:center;padding:30px;font-size:12px;color:#888}
+.numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:14px}
+.numcard{background:#0e141c;border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.num{font-size:26px;font-weight:800;letter-spacing:1px}
+.numlabel{color:var(--muted);font-size:12px;margin-top:6px}
+.rr-badge{display:inline-flex;align-items:center;gap:8px;margin-top:12px;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#0e141c;color:#cfd6e6;font-size:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:#7CFC98;box-shadow:0 0 10px rgba(124,252,152,.6)}
+
+/* Live Ops indicator (nav) */
+.liveops{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#0e141c;
+  color:#cfd6e6;
+  font-size:12px;
+}
+.pulse-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:#7CFC98;
+  box-shadow:0 0 10px rgba(124,252,152,.6);
+  animation:pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.75}
+  50%{transform:scale(1.5);opacity:1}
+  100%{transform:scale(1);opacity:.75}
+}
+
+/* Rapid Response badge animation */
+.rr-badge{
+  animation:rrGlow 2.2s ease-in-out infinite;
+}
+@keyframes rrGlow{
+  0%{box-shadow:0 0 0 rgba(124,252,152,0)}
+  50%{box-shadow:0 0 18px rgba(124,252,152,.18)}
+  100%{box-shadow:0 0 0 rgba(124,252,152,0)}
+}
+</style>
+</head>
+
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="leadership.html">Leadership</a>
+  <a href="recruitment.html">Recruitment</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="contact.html">Contact</a>
+<span class="liveops"><span class="pulse-dot"></span><strong>LIVE OPS:</strong> 24/7</span>
+</nav>
+
+<header>
+  <div class="logo-wrap">
+    <img src="logo.png" alt="Vanguard Global Solutions Logo">
+  </div>
+  <h1>Vanguard Global Solutions</h1>
+  <p class="subtle">Integrated Global Security, Training, Logistics, and Advisory Services.</p>
+</header>
+
+<section>
+  <h2>Capabilities</h2>
+  <div class="cards">
+    <div class="card">Protective & Executive Security</div>
+    <div class="card">Operational & Strategic Consulting</div>
+    <div class="card">Training & Advisory Services</div>
+    <div class="card">Logistics & Global Support</div>
+  </div>
+</section>
+
+<section>
+  <h2>Operational Readiness</h2>
+  <div class="numbers">
+    <div class="numcard">
+      <div class="num"data-target=>150+</div>
+      <div class="numlabel">Contract Operators</div>
+    </div>
+    <div class="numcard">
+      <div class="num"data-target=>65+</div>
+      <div class="numlabel">Countries Served</div>
+    </div>
+    <div class="numcard">
+      <div class="num"data-target=>6+</div>
+      <div class="numlabel">Global Regions</div>
+    </div>
+    <div class="numcard">
+      <div class="num"data-target=>24/7+</div>
+      <div class="numlabel">Rapid Response (24/7)</div>
+    </div>
+  </div>
+</section>
+<section>
+  <h2>Mission Pillars</h2>
+  <div class="cards">
+    <div class="card"><strong>Discretion & Professionalism</strong><br><span class="subtle">Low-profile posture, high standards, clear accountability.</span></div>
+    <div class="card"><strong>Risk Mitigation</strong><br><span class="subtle">Prevention-focused planning backed by disciplined execution.</span></div>
+    <div class="card"><strong>Compliance-Driven</strong><br><span class="subtle">Structured governance aligned to applicable laws and standards.</span></div>
+    <div class="card"><strong>Scalable Support</strong><br><span class="subtle">Flexible teams and solutions that fit mission scope and pace.</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Who We Serve</h2>
+  <div class="cards">
+    <div class="card">Corporate & Enterprise Clients</div>
+    <div class="card">International Organizations & NGOs</div>
+    <div class="card">Private Clients & Family Offices</div>
+    <div class="card">Infrastructure & Critical Assets</div>
+    <div class="card">High-Risk Travel & Operations Teams</div>
+    <div class="card">Event, Venue & Executive Programs</div>
+  </div>
+</section>
+
+<section>
+  <h2>Operational Philosophy</h2>
+  <div class="card">
+    <p class="subtle" style="margin:0;">
+      Vanguard Global Solutions emphasizes prevention over reaction, intelligence-led planning,
+      and disciplined execution. Our approach prioritizes discretion, compliance, and mission clarity
+      across all engagements—delivering dependable outcomes in complex environments.
+    </p>
+  </div>
+</section>
+<section>
+  <h2>Operational Capacity</h2>
+  <div class="card">
+    <p class="subtle" style="margin:0;">
+      Vanguard Global Solutions maintains access to <strong>over 150 contract operators</strong> with a broad
+      range of <strong>special operations–derived capabilities</strong>, available <strong>24/7</strong>.
+      This depth allows our clients to receive not only <strong>Tier-1–level services</strong>, but also
+      <strong>coordinated rapid-response support</strong> across multiple global regions when time and
+      reliability matter most.
+    </p>
+  </div>
+</section>
+
+
+<section>
+  <h2>Global Operations</h2>
+  <div id="map"></div>
+<div class="rr-badge"><span class="dot"></span><strong>Rapid Response:</strong> 24/7 Global On-Call Coverage</div>
+  <div class="legend">
+    <span class="badge">North America</span>
+    <span class="badge">South America</span>
+    <span class="badge">Europe</span>
+    <span class="badge">Africa</span>
+    <span class="badge">Middle East</span>
+    <span class="badge">Asia-Pacific</span>
+  </div>
+</section>
+
+<section>
+  <h2>Documents</h2>
+  <p class="subtle">Download client-facing documentation and policy references.</p>
+  <div class="downloads">
+  <a href="capability_statement.pdf" download>Capability Statement (PDF)</a>
+  <a href="code_of_conduct.pdf" download>Code of Conduct (PDF)</a>
+  <a href="nda.pdf" download>Non-Disclosure Agreement (PDF)</a>
+  <a href="client_intake_form.pdf" download>Client Intake Form (PDF)</a>
+</div>
+  <p class="subtle" style="margin-top:10px;">
+     </p>
+</section>
+
+<footer>© Vanguard Global Solutions</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const map = L.map('map').setView([20,0], 2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:6}).addTo(map);
+
+const points = [
+  {name:"North America", coords:[40,-75]},
+  {name:"South America", coords:[-23,-46]},
+  {name:"Europe", coords:[51,10]},
+  {name:"Africa", coords:[6,3]},
+  {name:"Middle East", coords:[25,55]},
+  {name:"Asia-Pacific", coords:[1,103]},
+];
+
+points.forEach(p=>{
+  L.circleMarker(p.coords,{radius:6}).addTo(map).bindPopup(`<strong>${p.name}</strong><br>Operational Presence`);
+});
+</script>
+</script><script>
+const counters = document.querySelectorAll('.num');
+let started = false;
+
+function runCounters() {
+  if (started) return;
+
+  const section = document.querySelector('.numbers');
+  const rect = section.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight - 100) {
+    started = true;
+
+    counters.forEach(counter => {
+      const target = +counter.dataset.target;
+      let current = 0;
+      const increment = Math.max(1, Math.floor(target / 60));
+
+      const update = () => {
+        current += increment;
+        if (current >= target) {
+          counter.textContent =
+            target === 24 ? "24/7" : target + "+";
+          return;
+        }
+        counter.textContent = current;
+        requestAnimationFrame(update);
+      };
+
+      update();
+    });
+  }
+}
+
+window.addEventListener('scroll', runCounters);
+window.addEventListener('load', runCounters);
+
+</body>
+</html>
