@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Recruitment | Vanguard Global Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--bg:#0b0f14;--panel:#141a22;--bar:#0e141c;--line:#1c2533;--txt:#e6e6e6;--muted:#aab1c3}
+body{margin:0;font-family:Arial;background:var(--bg);color:var(--txt)}
+nav{display:flex;gap:18px;padding:16px;background:var(--bar);justify-content:center;border-bottom:1px solid var(--line);flex-wrap:wrap}
+nav a{color:#cfd6e6;text-decoration:none;letter-spacing:1px;font-size:14px}
+section{max-width:900px;margin:auto;padding:40px 20px}
+.card{background:var(--panel);padding:20px;border-radius:8px;border:1px solid var(--line);margin-bottom:16px}
+h1,h2{text-transform:uppercase;letter-spacing:2px}
+.subtle{color:var(--muted);font-size:14px}
+form{display:grid;gap:12px;margin-top:14px}
+input,textarea,select,button{padding:12px;border-radius:6px;border:1px solid var(--line);background:#0e141c;color:var(--txt)}
+button{background:#2a3b55;border:none;color:#fff;font-weight:700;cursor:pointer}
+button:hover{background:#3a5275}
+.success{display:none;color:#7CFC98;font-weight:700;margin-top:8px}
+.jobs{display:grid;gap:10px;margin-top:14px}
+.job{padding:14px;border-radius:8px;border:1px solid var(--line);background:#0e141c}
+.tag{display:inline-block;margin-top:6px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="leadership.html">Leadership</a>
+  <a href="recruitment.html">Recruitment</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section>
+<h1>Recruitment</h1>
+<p class="subtle">
+We seek disciplined professionals who align with our operational standards and organizational values.
+</p>
+
+<section>
+  <h2>Mission Pillars</h2>
+  <div class="cards">
+    <div class="card">
+      <strong>Discretion & Professionalism</strong><br>
+      <span class="subtle">Operate with restraint, accountability, and respect for client confidentiality.</span>
+    </div>
+
+    <div class="card">
+      <strong>Risk Mitigation</strong><br>
+      <span class="subtle">Prioritize planning, situational awareness, and prevention.</span>
+    </div>
+
+    <div class="card">
+      <strong>Compliance-Driven Operations</strong><br>
+      <span class="subtle">Adherence to laws, regulations, and internal governance is mandatory.</span>
+    </div>
+
+    <div class="card">
+      <strong>Team Integration</strong><br>
+      <span class="subtle">Operate as part of a coordinated, mission-focused team.</span>
+    </div>
+  </div>
+</section>
+
+<p class="subtle">Select a role to view openings. Qualified candidates may apply below.</p>
+
+<div class="card">
+  <h2>Open Roles</h2>
+  <label class="subtle">Filter by role</label>
+  <select id="roleFilter">
+    <option value="ALL">All Roles</option>
+    <option value="Security">Security</option>
+    <option value="Training">Training</option>
+    <option value="Logistics">Logistics</option>
+    <option value="Intelligence">Intelligence</option>
+    <option value="Support">Support</option>
+  </select>
+
+  <div class="jobs" id="jobs"></div>
+</div>
+
+<div class="card">
+  <h2>Apply</h2>
+<p class="subtle">
+Clients may optionally complete a
+<a href="client_intake_form.pdf" download style="color:#cfd6e6;">Client Intake Form (PDF)</a>
+to support initial consultation requests.
+</p>
+
+  <form id="applyForm">
+    <input name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+
+    <label class="subtle">Role of Interest</label>
+    <select name="role">
+      <option>Security Specialist</option>
+      <option>Protective Security Detail (PSD)</option>
+      <option>Training Instructor</option>
+      <option>Logistics Coordinator</option>
+      <option>Intelligence Analyst</option>
+      <option>Operations Support</option>
+    </select>
+
+    <textarea name="experience" placeholder="Experience Summary" required></textarea>
+    <button type="submit">Submit Application</button>
+    <div class="success">Application received.</div>
+  </form>
+</div>
+
+</section>
+
+<script>
+const endpoint="https://formspree.io/f/movgrbwg";
+
+document.getElementById("applyForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  fetch(endpoint,{method:"POST",body:new FormData(e.target),headers:{"Accept":"application/json"}})
+  .then(()=>{document.querySelector(".success").style.display="block";e.target.reset();});
+});
+
+const data=[
+  {title:"Protective Security Specialist", cat:"Security", region:"Global"},
+  {title:"Armored Escort Team Member", cat:"Security", region:"MENA / Africa"},
+  {title:"Training Instructor (HEAT/PSD)", cat:"Training", region:"CONUS / Global"},
+  {title:"Logistics Coordinator", cat:"Logistics", region:"Global"},
+  {title:"Intelligence Analyst (Risk)", cat:"Intelligence", region:"Remote / Global"},
+  {title:"Operations Support", cat:"Support", region:"Global"},
+];
+
+const jobsEl=document.getElementById("jobs");
+const filter=document.getElementById("roleFilter");
+
+function render(){
+  const v=filter.value;
+  jobsEl.innerHTML="";
+  data.filter(j=>v==="ALL"||j.cat===v).forEach(j=>{
+    const d=document.createElement("div");
+    d.className="job";
+    d.innerHTML=`<strong>${j.title}</strong><div class="tag">${j.cat} • ${j.region}</div>`;
+    jobsEl.appendChild(d);
+  });
+}
+filter.addEventListener("change",render);
+render();
+</script>
+
+</body>
+</html>

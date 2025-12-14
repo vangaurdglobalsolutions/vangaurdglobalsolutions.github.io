@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact | Vanguard Global Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--bg:#0b0f14;--panel:#141a22;--bar:#0e141c;--line:#1c2533;--txt:#e6e6e6;--muted:#aab1c3}
+body{margin:0;font-family:Arial;background:var(--bg);color:var(--txt)}
+nav{display:flex;gap:18px;padding:16px;background:var(--bar);justify-content:center;border-bottom:1px solid var(--line);flex-wrap:wrap}
+nav a{color:#cfd6e6;text-decoration:none;letter-spacing:1px;font-size:14px}
+section{max-width:900px;margin:auto;padding:40px 20px}
+.card{background:var(--panel);padding:20px;border-radius:8px;border:1px solid var(--line)}
+h1{text-transform:uppercase;letter-spacing:2px}
+form{display:grid;gap:12px;margin-top:14px}
+input,textarea,button{padding:12px;border-radius:6px;border:1px solid var(--line);background:#0e141c;color:var(--txt)}
+button{background:#2a3b55;border:none;color:#fff;font-weight:700;cursor:pointer}
+button:hover{background:#3a5275}
+.success{display:none;color:#7CFC98;font-weight:700;margin-top:8px}
+.subtle{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="leadership.html">Leadership</a>
+  <a href="recruitment.html">Recruitment</a>
+  <a href="compliance.html">Compliance</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section>
+<h1>Secure Contact</h1>
+
+<div class="card">
+  <p class="subtle">Use the form below for initial contact. Encrypted channels available upon request.</p>
+
+  <form id="contactForm">
+    <input name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Send</button>
+    <div class="success">Message sent.</div>
+  </form>
+</div>
+
+</section>
+
+<script>
+const endpoint="https://formspree.io/f/movgrbwg";
+document.getElementById("contactForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  fetch(endpoint,{method:"POST",body:new FormData(e.target),headers:{"Accept":"application/json"}})
+  .then(()=>{document.querySelector(".success").style.display="block";e.target.reset();});
+});
+</script>
+
+</body>
+</html>
