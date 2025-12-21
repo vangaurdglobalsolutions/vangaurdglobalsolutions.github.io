@@ -19,7 +19,7 @@ header{text-align:center;padding:70px 20px;background:radial-gradient(circle at 
 @keyframes reveal{to{opacity:1;transform:none}}
 header img{max-width:170px;margin-bottom:18px}
 section{max-width:1000px;margin:0 auto;padding:50px 20px;}
-  .capabilities { margin-top: -30px; }
+  .capabilities { margin-top: 0px; }
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap: 18px; }
 .card{background:var(--panel);padding:20px;border-radius:8px;border:1px solid var(--line)}
 h1,h2{letter-spacing:2px;text-transform:uppercase}
@@ -80,9 +80,10 @@ footer{text-align:center;padding:30px;font-size:12px;color:#888}
 }
 header {
   position: relative;
+  overflow: hidden
   color: #ffffff;
   min-height: 420px;
-  padding: 100px 40px 40px;
+  padding: 100px 40px 50px;
 
   background-image: url("images/images/hero-operations.jpg");
   background-size: cover;
@@ -95,7 +96,7 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 70px;
+  height: 80px;
   background: linear-gradient(
     to bottom,
     rgba(11,15,20,0),
@@ -119,7 +120,7 @@ header::after {
 }
 header > * {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 }
@@ -445,6 +446,7 @@ window.addEventListener('load', runCounters);
 
 </body>
 </html>
+
 
 
 
