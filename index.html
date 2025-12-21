@@ -155,10 +155,17 @@ header {
   padding: 120px 40px 100px; /* TOP | LEFT/RIGHT | BOTTOM */
   text-align: center;
 
-  background:
-    linear-gradient(
-      rgba(11,15,20,0.75),
-      rgba(11,15,20,0.75)
+  background:header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(11, 15, 20, 0.40),
+    rgba(11, 15, 20, 0.60)
+  );
+  pointer-events: none;
+}
+
     ),
     url("images/images/hero-operations.jpg");
 
@@ -389,6 +396,7 @@ window.addEventListener('load', runCounters);
 
 </body>
 </html>
+
 
 
 
