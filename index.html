@@ -114,6 +114,36 @@ header > img {
   max-width: 140px;
   height: auto;
 }
+/* Option A: restrained tactical badge */
+.logo-wrap{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 18px;
+  border-radius:18px;
+
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+  margin: 18px auto 10px;
+}
+
+.logo-wrap img{
+  display:block;
+  height:auto;
+  max-width:170px; /* tweak this if you want bigger/smaller */
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.55));
+}
+
+/* Helps center the badge + headline if your header isn’t already centered */
+header{
+  text-align:center;
+}
 
 </style>
 </head>
@@ -329,6 +359,7 @@ window.addEventListener('load', runCounters);
 
 </body>
 </html>
+
 
 
 
