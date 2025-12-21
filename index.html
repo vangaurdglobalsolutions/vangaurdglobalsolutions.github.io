@@ -141,9 +141,21 @@ header > img {
 }
 
 /* Helps center the badge + headline if your header isn’t already centered */
-header{
-  text-align:center;
+header {
+  position: relative;
+  min-height: 420px;
+  padding: 80px 40px;
+  background:
+    linear-gradient(
+      rgba(11,15,20,0.75),
+      rgba(11,15,20,0.75)
+    ),
+    url("images/images/hero-operations.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 18px;
 }
+
 
 </style>
 </head>
@@ -158,12 +170,7 @@ header{
 <span class="liveops"><span class="pulse-dot"></span><strong>LIVE OPS:</strong> 24/7</span>
 </nav>
 <header>
-  <img
-    src="images/images/hero-operations.jpg"
-    alt="Global security operations"
-    style="width:100%; max-height:420px; object-fit:cover; border-radius:18px;"
-  />
-
+ 
   <div class="logo-wrap">
     <img src="logo.png" alt="Vanguard Global Solutions Logo">
   </div>
@@ -359,6 +366,7 @@ window.addEventListener('load', runCounters);
 
 </body>
 </html>
+
 
 
 
