@@ -20,25 +20,21 @@ header{text-align:center;padding:70px 20px;background:radial-gradient(circle at 
 header img{max-width:170px;margin-bottom:18px}
 section{max-width:1000px;margin:0 auto;padding:50px 20px;}
   /* Base cards grid (used site-wide) */
-.cards {
+/* Default cards grid (Capabilities section) */
+.capabilities .cards{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
-  .capabilities { margin-top: 0px; }
-/* Default cards (Capabilities) */
-.capabilities .cards {
+/* Rapid Response column: stack cards vertically */
+.rapid-response .rapid-cards{
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 
 
-@media (max-width: 900px){
-  .cards { grid-template-columns: 1fr; }
-  .rapid-cards { grid-template-columns: 1fr; }
-}
 
 
 
@@ -720,6 +716,7 @@ window.addEventListener('load', runCounters);
 
 </body>
 </html>
+
 
 
 
