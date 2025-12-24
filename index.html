@@ -19,6 +19,13 @@ header{text-align:center;padding:70px 20px;background:radial-gradient(circle at 
 @keyframes reveal{to{opacity:1;transform:none}}
 header img{max-width:170px;margin-bottom:18px}
 section{max-width:1000px;margin:0 auto;padding:50px 20px;}
+  /* Base cards grid (used site-wide) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
   .capabilities { margin-top: 0px; }
 /* Default cards (Capabilities) */
 .capabilities .cards {
@@ -27,21 +34,10 @@ section{max-width:1000px;margin:0 auto;padding:50px 20px;}
   gap: 18px;
 }
 
-/* Rapid Response cards ONLY */
-/* Default cards (Capabilities) */
-.capabilities .cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
 
-.rapid-cards{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
 @media (max-width: 900px){
-  .rapid-cards{ grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .rapid-cards { grid-template-columns: 1fr; }
 }
 
 
@@ -541,7 +537,7 @@ header h1 {
 <section class="rapid-response">
   <h2>RAPID RESPONSE</h2>
 
-  <div class="rapid-cards">
+  <div class="cards rapid-cards">
     <div class="card rapid-tile">
       <div class="rapid-image">
         <img src="images/images/rapid-response-operator.jpg" alt="Rapid response operator">
@@ -724,6 +720,7 @@ window.addEventListener('load', runCounters);
 
 </body>
 </html>
+
 
 
 
